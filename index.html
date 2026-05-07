@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Shafira Mustika Harda Saputri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fffafb;
+            overflow-x: hidden;
+            cursor: default;
+        }
+        .font-romance { font-family: 'Dancing Script', cursive; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+
+        .cursor-follower {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #fb7185;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.6;
+        }
+
+        .floating-element {
+            position: fixed;
+            top: -10%;
+            pointer-events: none;
+            z-index: 50;
+            user-select: none;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 10px 40px rgba(251, 113, 133, 0.08);
+            border-radius: 2.5rem;
+            padding: 3rem;
+        }
+
+        .section-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 1.5rem;
+        }
+
+        #progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(to right, #f43f5e, #fda4af);
+            z-index: 100;
+        }
+
+        .glow-text {
+            text-shadow: 0 0 15px rgba(251, 113, 133, 0.2);
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .heart-active {
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .reveal-text span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Tombol Tidak yang Menghindar */
+        #btn-no {
+            transition: all 0.2s ease;
+        }
+
+        /* Modal / Overlay */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="progress-bar"></div>
+    <div id="petal-container"></div>
+    <div id="cursor-follower" class="cursor-follower"></div>
+
+    <!-- Intro Section -->
+    <section id="hero" class="h-screen flex items-center justify-center text-center px-6 relative overflow-hidden">
+        <div class="z-10" id="hero-content">
+            <h2 class="font-romance text-rose-400 text-4xl mb-6 opacity-0 translate-y-10" id="hero-greet">Hiii, halo Sapi cantik...</h2>
+            <div class="glass-card max-w-xl mx-auto opacity-0 scale-90" id="hero-card">
+                <p class="text-gray-700 text-lg leading-relaxed mb-10">
+                    Kalau boleh, Kaza izin meminta waktu Sapi sebentar yaaa... <br>
+                    Cukup <span class="font-bold text-rose-600 underline">5 menit</span> saja kok Sapi. <br>
+                    Kaza izin yaaa minta waktunya ya Sapi cantik?
+                </p>
+                <button onclick="startJourney()" class="bg-rose-500 text-white font-bold py-4 px-12 rounded-full transition-all transform hover:scale-110 active:scale-95 shadow-xl hover:bg-rose-600">
+                    Iya, Kaza Boleh Kok 🌸
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div id="main-content" class="hidden opacity-0">
+        
+        <!-- Section 1: Opening -->
+        <section class="section-container">
+            <div class="max-w-3xl text-center gs_reveal">
+                <h1 class="font-serif italic text-5xl text-rose-900 mb-10">Halo manusia baik hati...</h1>
+                <p class="text-xl text-gray-700 leading-loose mb-12">
+                    Terima kasih ya sudah menyempatkan waktu untuk membuka website ini. Semoga tampilannya bisa membuat harimu sedikit lebih berwarna.
+                </p>
+                <div class="p-8 bg-rose-50/50 rounded-3xl border-2 border-rose-100 italic text-rose-800 text-2xl font-romance">
+                    "Engga kerasa ya pi? Udah 8 hari sejak kamu dateng lagi ke hidup kazaa..."
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Interactive Gratitude -->
+        <section class="section-container bg-rose-50/20">
+            <div class="max-w-5xl grid md:grid-cols-2 gap-16 items-center">
+                <div class="gs_reveal_left">
+                    <h2 class="font-serif text-4xl text-rose-800 mb-8 italic">Terima kasih, Sapi.</h2>
+                    <p class="text-gray-700 text-xl leading-relaxed mb-8">
+                        Terima kasih sudah menemani kaza, membuat kaza merasakan kembali hal-hal kecil yang manis. Kaza sangat bersyukur bisa ketemu kamu lagi.
+                    </p>
+                    <div class="flex items-center gap-4 text-rose-500">
+                        <div class="h-1 w-20 bg-rose-300"></div>
+                        <span class="font-bold italic">Kaza sayang bgt.</span>
+                    </div>
+                </div>
+                <div class="gs_reveal_right flex justify-center">
+                    <div class="relative w-72 h-72">
+                        <div class="absolute inset-0 bg-rose-200 rounded-full animate-ping opacity-20"></div>
+                        <div class="relative z-10 w-full h-full glass-card flex items-center justify-center text-8xl heart-active border-2 border-rose-100">
+                            💖
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: The Apology -->
+        <section class="section-container bg-white">
+            <div class="max-w-4xl text-center gs_reveal">
+                <h3 class="font-serif text-4xl text-gray-800 mb-12 italic underline decoration-rose-200 underline-offset-8">Maafkan Kaza Ya...</h3>
+                <p class="text-xl text-gray-600 leading-loose mb-12">
+                    Kaza minta maaf kalau pernah ganggu hidup kamu atau buat kamu merasa nggak nyaman. Niat kaza cuma satu...
+                </p>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="p-8 glass-card border-rose-50">
+                        <div class="text-4xl mb-4">😊</div>
+                        <p class="text-sm">Liat Sapi Senyum</p>
+                    </div>
+                    <div class="p-8 glass-card border-rose-50 transform md:translate-y-8">
+                        <div class="text-4xl mb-4">✨</div>
+                        <p class="text-sm">Jalanin Hari Bahagia</p>
+                    </div>
+                    <div class="p-8 glass-card border-rose-50">
+                        <div class="text-4xl mb-4">🌈</div>
+                        <p class="text-sm">Capai Semua Impian</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Deep Feelings -->
+        <section class="section-container bg-rose-900 text-rose-50">
+            <div class="max-w-3xl text-center gs_reveal">
+                <h4 class="text-5xl font-serif mb-12 opacity-80 italic">"Kamu Berhasil..."</h4>
+                <p class="text-2xl font-light leading-relaxed mb-12 border-l-2 border-rose-500 pl-8 text-left">
+                    "Kamu berhasil buat kaza jatuh cinta lagi sama kamu, kamu berhasil mengembalikan rasa yang udah pengen banget aku tutup supaya engga ganggu kamu..."
+                </p>
+                <p class="text-rose-300 font-romance text-3xl">
+                    Tapi kaza janji, kaza akan berusaha sekuat tenaga buat nggak bikin kamu terganggu lagi, Sayang.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 5: The Wing -->
+        <section class="section-container relative overflow-hidden">
+            <div class="max-w-5xl text-center gs_reveal">
+                <p class="text-gray-400 uppercase tracking-widest text-sm mb-6">Sebuah Janji</p>
+                <h2 class="font-serif text-5xl md:text-8xl mb-12 text-rose-950 leading-tight">
+                    Kapanpun Mimpi Terasa Jauh...
+                </h2>
+                <div class="glass-card p-12 inline-block">
+                    <p class="text-2xl md:text-4xl italic text-rose-700">
+                        "Oh ingatlah sesuatu, ku akan selalu jadi <br> <span class="font-bold underline decoration-rose-300">Sayap Pelindungmu.</span>"
+                    </p>
+                </div>
+                <p class="mt-12 text-gray-500 font-medium">Kaza selalu ada di sini, kapanpun Sapi butuh.</p>
+            </div>
+        </section>
+
+        <!-- Section 6: Tiny Request -->
+        <section class="section-container bg-rose-50/40">
+            <div class="max-w-xl text-center gs_reveal">
+                <div class="text-7xl mb-8">🥺</div>
+                <p class="text-2xl text-gray-800 mb-10 leading-relaxed">
+                    Permintaan kaza cuma satu... tolong jangan panggil kaza selain <span class="font-bold text-rose-600 italic text-3xl">Kaza</span> ya?
+                </p>
+                <p class="text-gray-400 font-serif italic italic">"Karna nama itu berharga buat kaza."</p>
+            </div>
+        </section>
+
+        <!-- Final Section: Poetry & Question -->
+        <section class="section-container bg-white relative">
+            <div class="max-w-2xl text-center gs_reveal z-10">
+                <h2 class="font-romance text-7xl text-rose-500 mb-16">Untuk Shafira</h2>
+                <div class="space-y-8 text-2xl text-gray-700 italic font-serif mb-20">
+                    <p class="reveal-text"><span>Di antara jutaan aksara yang tercipta,</span></p>
+                    <p class="reveal-text"><span>Namamu adalah bait paling indah yang pernah kubaca.</span></p>
+                    <p class="reveal-text"><span>Mencintaimu adalah tentang belajar merelakan,</span></p>
+                    <p class="reveal-text"><span>Melihatmu bahagia adalah satu-satunya tujuan.</span></p>
+                    <p class="reveal-text"><span>Meski rasa ini harus kusimpan sangat rapi,</span></p>
+                    <p class="reveal-text"><span>Doaku akan menjagamu setiap hari.</span></p>
+                </div>
+                
+                <div class="gs_reveal">
+                    <h3 class="font-romance text-5xl md:text-7xl text-rose-600 glow-text mb-16 heart-active">
+                        Kaza sayang sama kamu, Shafira.
+                    </h3>
+
+                    <!-- Interactive Question -->
+                    <div class="glass-card mt-20" id="final-question">
+                        <h4 class="font-serif text-2xl mb-8 text-gray-800">Bolehkah kaza meminta maaf dari kamu, Sapi cantik?</h4>
+                        <div class="flex flex-wrap justify-center gap-6">
+                            <button onclick="acceptForgiveness()" id="btn-yes" class="bg-emerald-500 text-white font-bold py-4 px-10 rounded-full transition-all hover:bg-emerald-600 shadow-lg">
+                                Iya, dimaafin 🌸
+                            </button>
+                            <button onmouseover="moveButton()" id="btn-no" class="bg-rose-500 text-white font-bold py-4 px-10 rounded-full shadow-lg">
+                                Enggak 😝
+                            </button>
+                        </div>
+                        <p id="no-message" class="mt-6 text-rose-400 italic text-sm opacity-0"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Final Success Modal -->
+    <div id="success-modal" class="modal-overlay">
+        <div class="glass-card max-w-lg text-center p-12 bg-white/95">
+            <div class="text-7xl mb-6">💐</div>
+            <h2 class="font-romance text-5xl text-rose-500 mb-6">Yeeey!</h2>
+            <p class="text-gray-700 text-lg mb-8 leading-relaxed">
+                Terima kasih ya sapi cantik sudah memaafkan kaza. Ini bunga virtual untuk kamu! <br><br>
+                Kaza janji akan jadi lebih baik lagi. Kamu tetap semangat ya jalani harinya. I love you, Shafira!
+            </p>
+            <button onclick="closeModal()" class="bg-rose-500 text-white py-3 px-8 rounded-full font-bold">Tutup 💖</button>
+        </div>
+    </div>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        const follower = document.getElementById('cursor-follower');
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(follower, {
+                x: e.clientX,
+                y: e.clientY,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        });
+
+        window.onload = () => {
+            const tl = gsap.timeline();
+            tl.to("#hero-greet", { opacity: 1, y: 0, duration: 1, ease: "back.out" })
+              .to("#hero-card", { opacity: 1, scale: 1, duration: 1, ease: "power3.out" }, "-=0.5");
+            
+            createFloatingElements();
+        };
+
+        function startJourney() {
+            gsap.to("#hero", { opacity: 0, scale: 1.1, duration: 1, onComplete: () => {
+                document.getElementById('hero').classList.add('hidden');
+                const main = document.getElementById('main-content');
+                main.classList.remove('hidden');
+                gsap.to(main, { opacity: 1, duration: 1 });
+                initScrollAnimations();
+            }});
+        }
+
+        function createFloatingElements() {
+            const container = document.getElementById('petal-container');
+            const items = ['🌸', '✨', '💕', '🌹', '❤️'];
+            
+            setInterval(() => {
+                const el = document.createElement('div');
+                el.className = 'floating-element';
+                el.innerHTML = items[Math.floor(Math.random() * items.length)];
+                el.style.left = Math.random() * 100 + 'vw';
+                el.style.fontSize = (Math.random() * 20 + 15) + 'px';
+                container.appendChild(el);
+
+                gsap.to(el, {
+                    y: window.innerHeight + 100,
+                    x: (Math.random() - 0.5) * 200,
+                    rotation: Math.random() * 360,
+                    duration: Math.random() * 5 + 5,
+                    ease: "none",
+                    onComplete: () => el.remove()
+                });
+            }, 400);
+        }
+
+        function initScrollAnimations() {
+            gsap.to("#progress-bar", {
+                width: "100%",
+                ease: "none",
+                scrollTrigger: { scrub: 0.3 }
+            });
+
+            gsap.utils.toArray(".gs_reveal").forEach(el => {
+                gsap.from(el, {
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    },
+                    y: 60,
+                    opacity: 0,
+                    duration: 1.5,
+                    ease: "power3.out"
+                });
+            });
+
+            gsap.from(".gs_reveal_left", {
+                scrollTrigger: ".gs_reveal_left",
+                x: -100,
+                opacity: 0,
+                duration: 1.5,
+                ease: "power3.out"
+            });
+
+            gsap.from(".gs_reveal_right", {
+                scrollTrigger: ".gs_reveal_right",
+                x: 100,
+                opacity: 0,
+                duration: 1.5,
+                ease: "power3.out"
+            });
+
+            gsap.utils.toArray(".reveal-text span").forEach(span => {
+                gsap.to(span, {
+                    scrollTrigger: {
+                        trigger: span,
+                        start: "top 90%"
+                    },
+                    opacity: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power2.out"
+                });
+            });
+        }
+
+        // Logic for "Tidak" button avoiding cursor
+        let noCount = 0;
+        const messages = [
+            "Yah, kok gitu? Maafin dong 🥺",
+            "Masa gak dimaafin sih? Please...",
+            "Kaza bakal janji jadi lebih baik kok!",
+            "Ayo dong sapi, pencet tombol iya...",
+            "Tuh kan tombolnya lari, mending pencet iya aja"
+        ];
+
+        function moveButton() {
+            const btnNo = document.getElementById('btn-no');
+            const msg = document.getElementById('no-message');
+            
+            // Random position logic
+            const x = Math.random() * (window.innerWidth - 200) - (window.innerWidth / 2) + 100;
+            const y = Math.random() * (window.innerHeight - 100) - (window.innerHeight / 2) + 50;
+            
+            btnNo.style.transform = `translate(${x}px, ${y}px)`;
+            
+            // Update message
+            msg.innerText = messages[noCount % messages.length];
+            msg.style.opacity = '1';
+            noCount++;
+
+            // Grow the "Yes" button slightly to encourage clicking
+            const btnYes = document.getElementById('btn-yes');
+            const currentScale = 1 + (noCount * 0.1);
+            btnYes.style.transform = `scale(${currentScale})`;
+        }
+
+        function acceptForgiveness() {
+            document.getElementById('success-modal').style.display = 'flex';
+            // Celebration effect
+            for(let i=0; i<50; i++) {
+                setTimeout(createBurstPetal, i * 50);
+            }
+        }
+
+        function createBurstPetal() {
+            const container = document.getElementById('petal-container');
+            const el = document.createElement('div');
+            el.className = 'floating-element';
+            el.innerHTML = '💐';
+            el.style.left = '50vw';
+            el.style.top = '50vh';
+            container.appendChild(el);
+
+            gsap.to(el, {
+                x: (Math.random() - 0.5) * 1000,
+                y: (Math.random() - 0.5) * 1000,
+                rotation: Math.random() * 720,
+                opacity: 0,
+                duration: 2,
+                ease: "power2.out",
+                onComplete: () => el.remove()
+            });
+        }
+
+        function closeModal() {
+            document.getElementById('success-modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
